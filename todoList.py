@@ -1,12 +1,14 @@
 
 class Todo:
     
+    # static method
     @staticmethod
-    def welcome(self):
+    def welcome():
         print('--------------------------------')
         print('Welcome to Todo list app in Python')
         print('---------------------------------')
     
+    # display method
     def menu(self):
         try:
             print('1. Create todo')
@@ -18,5 +20,10 @@ class Todo:
             return choice
         except Exception as e:
             print(e)
-        
+
+# run static method
+Todo.welcome()
+# create object from class
+todo = Todo()
+
     
