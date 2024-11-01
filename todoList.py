@@ -46,7 +46,7 @@ class Todo:
         print("Todo's:", self.todo_list)
         print('-----------------------------------')
     
-    # todo method
+    # update method
     def update_todo(self):
         task = input('Enter task you want to update: ')
         if task not in self.todo_list:
@@ -60,6 +60,22 @@ class Todo:
             print('--------------------------')
             print('Task Updated Successfully..', self.todo_list)
             print('---------------------------')
+    
+    # delete method
+    def delete_todo(self):
+        task = input('Enter task you want to delete: ')
+        if task not in self.todo_list:
+            print('------------------')
+            print('Task not exist..')
+            print('-------------------')
+        else:
+            ind = self.todo_list.index(task)
+            del self.todo_list[ind]
+            print('--------------------------')
+            print('Task Deleted Successfully..', self.todo_list)
+            print('---------------------------')
+    
+    
 
 # run static method
 Todo.welcome()
@@ -70,7 +86,9 @@ while True:
     result = todo.menu()
     if result == 1:
         todo.create_todo()
-    if result == 2:
+    elif result == 2:
         todo.view_todo()
-    if result == 3:
+    elif result == 3:
         todo.update_todo()
+    elif result == 4:
+        todo.delete_todo()
