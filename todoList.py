@@ -26,55 +26,68 @@ class Todo:
             
     # create method
     def create_todo(self):
-        total_tasks = int(input("Enter todo's: "))
-        for i in range(1, total_tasks + 1):
-            task = input(f'Enter task no {i}: ')
-            if task in self.todo_list:
-                print(f'Todo with this {task} name alredy exist')
-            else:
-                self.todo_list.append(task)
-                self.total_todos+=1
-        print('--------------------------------')
-        # print(self.todo_list)
-        print(('Tasks Saved: ' + ', '.join(str(i) for i in self.todo_list)))
-        print('--------------------------------')
+        try:
+            total_tasks = int(input("Enter todo's: "))
+            for i in range(1, total_tasks + 1):
+                task = input(f'Enter task no {i}: ')
+                if task in self.todo_list:
+                    print(f'Todo with this {task} name alredy exist')
+                else:
+                    self.todo_list.append(task)
+                    self.total_todos+=1
+            print('--------------------------------')
+            # print(self.todo_list)
+            print(('Tasks Saved: ' + ', '.join(str(i) for i in self.todo_list)))
+            print('--------------------------------')
+        except Exception as e:
+            print(e)
 
     # view method
     def view_todo(self):
-        print('-----------------------------------')
-        print('Total tasks:', self.total_todos)
-        print("Todo's:", self.todo_list)
-        print('-----------------------------------')
+        try:
+            print('-----------------------------------')
+            print('Total tasks:', self.total_todos)
+            print("Todo's:", self.todo_list)
+            print('-----------------------------------')
+        except Exception as e:
+            print(e)
     
     # update method
     def update_todo(self):
-        task = input('Enter task you want to update: ')
-        if task not in self.todo_list:
-            print('------------------')
-            print('Task not exist..')
-            print('-------------------')
-        else:
-            updated_task = input('Enter Updated Task: ')
-            ind = self.todo_list.index(task)
-            self.todo_list[ind] = updated_task
-            print('--------------------------')
-            print('Task Updated Successfully..', self.todo_list)
-            print('---------------------------')
-    
+        try:
+            task = input('Enter task you want to update: ')
+            if task not in self.todo_list:
+                print('------------------')
+                print('Task not exist..')
+                print('-------------------')
+            else:
+                updated_task = input('Enter Updated Task: ')
+                ind = self.todo_list.index(task)
+                self.todo_list[ind] = updated_task
+                print('--------------------------')
+                print('Task Updated Successfully..', self.todo_list)
+                print('---------------------------')
+        except Exception as e:
+            print(e)
+            
     # delete method
     def delete_todo(self):
-        task = input('Enter task you want to delete: ')
-        if task not in self.todo_list:
-            print('------------------')
-            print('Task not exist..')
-            print('-------------------')
-        else:
-            ind = self.todo_list.index(task)
-            del self.todo_list[ind]
-            print('--------------------------')
-            print('Task Deleted Successfully..', self.todo_list)
-            print('---------------------------')
-    
+        try:
+            task = input('Enter task you want to delete: ')
+            if task not in self.todo_list:
+                print('------------------')
+                print('Task not exist..')
+                print('-------------------')
+            else:
+                ind = self.todo_list.index(task)
+                del self.todo_list[ind]
+                self.total_todos-=1
+                print('--------------------------')
+                print('Task Deleted Successfully..', self.todo_list)
+                print('Total task:', self.total_todos)
+                print('---------------------------')
+        except Exception as e:
+            print(e)
     
 
 # run static method
@@ -92,3 +105,12 @@ while True:
         todo.update_todo()
     elif result == 4:
         todo.delete_todo()
+    elif result == 5:
+        print('------------------------------')
+        print('Thankyou for using Todo app..')
+        print('-------------------------------')
+        break
+    else:
+        print('------------------------------------')
+        print('Invalid Number, Please try again..')
+        print('------------------------------------')
