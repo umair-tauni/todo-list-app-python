@@ -45,6 +45,21 @@ class Todo:
         print('Total tasks:', self.total_todos)
         print("Todo's:", self.todo_list)
         print('-----------------------------------')
+    
+    # todo method
+    def update_todo(self):
+        task = input('Enter task you want to update: ')
+        if task not in self.todo_list:
+            print('------------------')
+            print('Task not exist..')
+            print('-------------------')
+        else:
+            updated_task = input('Enter Updated Task: ')
+            ind = self.todo_list.index(task)
+            self.todo_list[ind] = updated_task
+            print('--------------------------')
+            print('Task Updated Successfully..', self.todo_list)
+            print('---------------------------')
 
 # run static method
 Todo.welcome()
@@ -57,3 +72,5 @@ while True:
         todo.create_todo()
     if result == 2:
         todo.view_todo()
+    if result == 3:
+        todo.update_todo()
