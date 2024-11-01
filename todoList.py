@@ -29,8 +29,11 @@ class Todo:
         total_tasks = int(input("Enter todo's: "))
         for i in range(1, total_tasks + 1):
             task = input(f'Enter task no {i}: ')
-            self.todo_list.append(task)
-            self.total_todos+=1
+            if task in self.todo_list:
+                print(f'Todo with this {task} name alredy exist')
+            else:
+                self.todo_list.append(task)
+                self.total_todos+=1
         print('--------------------------------')
         # print(self.todo_list)
         print(('Tasks Saved: ' + ', '.join(str(i) for i in self.todo_list)))
